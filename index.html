@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>diroop ui:</title>
+
+    <!-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/> -->
+
+      <!-- <link href="assets/css/toolkit-inverse.css" rel="stylesheet"> -->
+      <link href="assets/css/toolkit-light.css" rel="stylesheet">
+    <link href="diroop.css" rel="stylesheet">
+
+
+    <link href="/favicon.ico" rel="icon">
+<!-- from diroop.tools-->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/tv4/tv4.js"></script>
+    <script src="bower_components/moment/min/moment.min.js"></script>
+    <script src="bower_components/underscore/underscore-min.js"></script>
+
+    <script src="bower_components/angular-ui-format/format.min.js"></script>
+    <script src="bower_components/angular-ui-keypress/keypress.min.js"></script>
+
+<!-- -->
+    <script src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
+    <script src="bower_components/ace-builds/src-min-noconflict/ext-language_tools.js"></script>
+    <script src="bower_components/ace-builds/src-min-noconflict/mode-json.js"></script>
+    <script src="bower_components/angular-ui-ace/ui-ace.js"></script>
+
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="bower_components/json-schema-faker/dist/json-schema-faker.min.js"></script>
+
+    <script src="bower_components/diroop.tools/dist/diroop.tools.js"></script>
+
+    <script src="dist/diroop.ui.js"></script>
+
+    <style>
+      body {
+        padding-top: 50px;
+      }
+      /*.main-content {
+        padding: 40px 15px;
+      }*/
+
+      .container-fluid .ace_editor{
+          min-height : 400px;
+     }
+
+      .dr-schema-list-item a{
+        font-size:12px;
+        line-height:12px;
+      }
+      </style>
+
+  </head>
+  <body ng-app="diroop.ui">
+    <dr:nav:bar></dr:nav:bar>
+    <div ui-view class="container-fluid container-fluid-spacious"> </div>
+
+  <!-- <div class="container">
+
+      <div class="row">
+        <div class="col-sm-3 sidebar">
+            <dr:side:nav></dr:side:nav>
+        </div>
+        <div ui-view class="col-sm-9 content">
+
+        </div>
+      </div>
+   </div> -->
+  </body>
+</html>

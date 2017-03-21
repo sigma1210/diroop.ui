@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Validation Messages
+  </div>
+  <div class="panel-body">
+      {{exception.message}}
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="error in exception.errors">
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <span class="badge">{{error.code}}</span>
+          {{error.message}}
+        </div>
+        <div class="panel-body">
+          <dl class="dl-horizontal">
+            <dt>params:</dt>
+            <dd>{{error.params}}</dd>
+            <dt>dataPath:</dt>
+            <dd>{{error.dataPath}}</dd>
+            <dt>schemaPath:</dt>
+            <dd>{{error.schemaPath}}</dd>
+            <dt>subError:</dt>
+            <dd><pre class="pre-scrollable" ng-if="error.subErrors">{{error.subError|json}}</dd>
+          </dl>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

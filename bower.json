@@ -1,0 +1,25 @@
+{
+  "name": "diroop.ui",
+  "description": "diroop ui components",
+  "main": "gulp.js",
+  "authors": [
+    "reg"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-ace": "bower",
+    "angular-bootstrap": "^2.2.0",
+    "json-schema-faker": "^0.4.1",
+    "diroop.tools": "https://github.com/sigma1210/diroop.tools.git#1.0.0.4",
+    "angular-ui-keypress": "angular-ui-utils#bower-keypress",
+    "angular-ui-router": "^0.4.2"
+  }
+}

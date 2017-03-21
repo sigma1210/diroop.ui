@@ -1,0 +1,35 @@
+<div>
+  <dr:schema:path:loader path="$ctrl.path" on-schema-select="$ctrl.selectSchema(ref)"></dr:schema:path:loader>
+  <uib-tabset active="active">
+      <uib-tab index="0">
+        <uib-tab-heading>
+          <span class="icon icon-flow-line"></span> raw
+        </uib-tab-heading>
+        <dr:json:viewer entity="$ctrl.rawSchema" ></dr:json:viewer>
+      </uib-tab>
+      <uib-tab index="1" >
+        <uib-tab-heading>
+          <span class="icon icon-flow-tree"></span> expanded
+        </uib-tab-heading>
+        <dr:json:viewer entity="$ctrl.schema" ></dr:json:viewer>
+      </uib-tab>
+      <uib-tab index="2" >
+        <uib-tab-heading>
+          <span class="icon icon-flow-cascade"></span> sample
+        </uib-tab-heading>
+        <dr:json:viewer entity="$ctrl.sampleModel" ></dr:json:viewer>
+      </uib-tab>
+      <uib-tab index="3" ng-if="$ctrl.error" >
+        <uib-tab-heading>
+          <span class="icon icon-bug"></span> errors
+        </uib-tab-heading>
+        <div class="panel panel-danger">
+           <div class="panel-body">
+            <pre class="pre-scrollable">{{$ctrl.error|json}}</pre>
+           </div>
+        </div>
+      </uib-tab>
+
+    </uib-tabset>
+
+</div>

@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="input-group">
+        <input type="text" class="form-control" ng-model="searchText">
+        <span class="input-group-addon"><span class="glyphicon glyphicon-filter" aria-hidden="true" ></span></span>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div ng-repeat="schema in cachedSchemas | filter:searchText" class="dr-schema-list-item">
+    <a href class="btn btn-link"
+       ng-click="selectSchema(schema)">
+       <span class="glyphicon glyphicon-link" aria-hidden="true" ></span>
+       {{schema}}
+     </a>
+   </div>
+  </div>
+</div>

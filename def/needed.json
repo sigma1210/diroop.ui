@@ -1,0 +1,29 @@
+{
+  "lib":[
+    "bower_components/angular/angular.min.js",
+    "bower_components/tv4/tv4.js",
+    "bower_components/moment/min/moment.min.js",
+    "bower_components/underscore/underscore-min.js",
+    "bower_components/angular-ui-format/format.min.js",
+    "bower_components/angular-ui-keypress/keypress.min.js",
+    "bower_components/ace-builds/src-min-noconflict/ace.js",
+    "bower_components/ace-builds/src-min-noconflict/ext-language_tools.js",
+    "bower_components/ace-builds/src-min-noconflict/mode-json.js",
+    "bower_components/angular-ui-ace/ui-ace.js",
+    "bower_components/angular-ui-router/release/angular-ui-router.min.js",
+    "bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js",
+    "bower_components/json-schema-faker/dist/json-schema-faker.min.js",
+    "bower_components/diroop.tools/dist/diroop.tools.js"
+  ],
+  "source":[
+    "./src/*.js",
+    "./src/**/*.js",
+    "./temp/**/*.js"
+  ],
+  "testSupport":[
+    "bower_components/angular-mocks/angular-mocks.js"
+  ],
+  "tests":[
+    "./tests/unit/**/*.js"
+  ]
+}

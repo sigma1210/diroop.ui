@@ -1,0 +1,15 @@
+<div class="input-group" ui-keypress="{enter: '$ctrl.onEnterKey($event)'}">
+  <span class="input-group-addon"><span class="icon icon-credit" aria-hidden="true">ref:</span></span>
+  <input type="text"
+      class="form-control"
+      placeholder="schema Url"
+      uib-typeahead="schema.label for schema in $ctrl.search($viewValue)"
+      typeahead-on-select="$ctrl.pickSchema($item, $model, $label, $event)"
+      ng-model="$ctrl.path"
+    />
+    <span class="input-group-btn">
+      <button class="btn btn-primary" ng-click="$ctrl.loadSchema()" type="button">
+        <span class="icon icon-share" aria-hidden="true"></span>
+      </button>
+  </span>
+</div>
