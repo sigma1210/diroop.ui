@@ -1,15 +1,14 @@
-(function(ng,directive){
+(function(ng,component){
   'use strict';
   /**
-   * @ngdoc directive
+   * @ngdoc component
    * @name dr-json-viewer
    * @memberof diroop.ui
    * @requires $log                - can't live without $log
    * @requires $filter             - provide access to json filter
-
    * @restrict E
    * @description
-      A directive to display an object as a formated JSON string
+      A componet to display an object as a formated JSON string
    *@scope
       entity '=?'
       allowEval
@@ -18,50 +17,46 @@
    * @example
       <dr:json:viewer entity="theObjectToBeDisplayed" />
   **/
-  directive('drJsonViewer',['$log','$filter', drJsonViewer]);
-  function drJsonViewer($log,$filter){
-      var jsonify = $filter('json');
-      //re-use json filter
-      var viewController = function($scope){
-        $scope.jsonData = jsonify($scope.entity);
-        $scope.aceLoaded = function(_editor){
-          $scope.aceEditor = _editor;
-          _editor.$blockScrolling = Infinity;
 
+  component('drJsonViewer',{
+    templateUrl:'drUiTemplateCache:/json/json-viewer.html',
+    bindings:{
+      entity:'=?',
+      allowEval:'=?',
+      parseError:'=?',
+      onEntityParse:'&'
+    },
+    controller:['$scope','$log','$filter',function($scope,$log,$filter){
+        var jsonify = $filter('json'),
+            _self = this;
+
+        _self.jsonData = jsonify($scope.entity);
+
+        _self.aceLoaded = function(_editor){
+          _self.aceEditor = _editor;
+          _editor.$blockScrolling = Infinity;
         };
-        $scope.aceChange = function(e){
-          $log.debug('acechange');
-          $log.debug(e);
-        };
-        $scope.$watch('entity',function(){
-          $scope.jsonData = jsonify($scope.entity);
-       });
-       $scope.compileEntity = function(){
-         $scope.parseError= null;
-         if(!$scope.allowEval)return;
-         try{
-           var _entity = $scope.$eval($scope.jsonData);
-           $scope.entity = _entity;
-           $scope.onEntityParse({
-             entity:$scope.entity
-           });
-         }catch(e){
-           $scope.parseError= {
-             message:"error parsing json",
-             error:e
-            };
-         }
-       };
-     };
-      return{
-        controller:['$scope',viewController],
-        scope:{
-          entity:'=?',
-          allowEval:'=?',
-          parseError:'=?',
-          onEntityParse:'&'
-        },
-        templateUrl:'drUiTemplateCache:/json/json-viewer.html',
+
+       _self.parseEntity = function(){
+        _self.parseError= null;
+        if(!_self.allowEval)return;
+        try{
+          var _entity = $scope.$eval(_self.jsonData);
+          _self.entity = _entity;
+          _self.onEntityParse({
+            entity:_self.entity
+          });
+        }catch(e){
+          _self.parseError= {
+            message:"error parsing json",
+            error:e
+          };
+        }
       };
-  }
-})(angular,angular.module('diroop.tools').directive);
+
+      $scope.$watch('$ctrl.entity',function(){
+         _self.jsonData = jsonify(_self.entity);
+      });
+    }]});
+
+})(angular,angular.module('diroop.ui').component);

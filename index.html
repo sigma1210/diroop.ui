@@ -3,77 +3,61 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <meta name="description" content="">
-    <meta name="author" content="">
-
+    <meta name="description" content="diroop ui tools">
+    <meta name="author" content="sigm1210">
     <title>diroop ui:</title>
-
-    <!-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/> -->
-
-      <!-- <link href="assets/css/toolkit-inverse.css" rel="stylesheet"> -->
-      <link href="assets/css/toolkit-light.css" rel="stylesheet">
-    <link href="diroop.css" rel="stylesheet">
-
-
-    <link href="/favicon.ico" rel="icon">
+<!--<link href="assets/css/toolkit-inverse.css" rel="stylesheet">-->
+    <link href="assets/css/toolkit-light.css"
+          rel="stylesheet">
+    <link href="assets/css/diroop.css"
+          rel="stylesheet">
+    <link href="bower_components/angular-ui-tree/dist/angular-ui-tree.min.css"
+          rel="stylesheet">
 <!-- from diroop.tools-->
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/tv4/tv4.js"></script>
     <script src="bower_components/moment/min/moment.min.js"></script>
     <script src="bower_components/underscore/underscore-min.js"></script>
 
+<!--these could be combined -->
     <script src="bower_components/angular-ui-format/format.min.js"></script>
     <script src="bower_components/angular-ui-keypress/keypress.min.js"></script>
 
-<!-- -->
+<!--insure they are linked coorectly-->
     <script src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
     <script src="bower_components/ace-builds/src-min-noconflict/ext-language_tools.js"></script>
     <script src="bower_components/ace-builds/src-min-noconflict/mode-json.js"></script>
     <script src="bower_components/angular-ui-ace/ui-ace.js"></script>
-
+<!--for route defining -->
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
     <script src="bower_components/json-schema-faker/dist/json-schema-faker.min.js"></script>
+    <script src="bower_components/angular-ui-tree/dist/angular-ui-tree.js"></script>
 
     <script src="bower_components/diroop.tools/dist/diroop.tools.js"></script>
 
     <script src="dist/diroop.ui.js"></script>
 
-    <style>
-      body {
-        padding-top: 50px;
-      }
-      /*.main-content {
-        padding: 40px 15px;
-      }*/
-
-      .container-fluid .ace_editor{
-          min-height : 400px;
-     }
-
-      .dr-schema-list-item a{
-        font-size:12px;
-        line-height:12px;
-      }
-      </style>
-
   </head>
   <body ng-app="diroop.ui">
     <dr:nav:bar></dr:nav:bar>
-    <div ui-view class="container-fluid container-fluid-spacious"> </div>
-
-  <!-- <div class="container">
-
-      <div class="row">
-        <div class="col-sm-3 sidebar">
-            <dr:side:nav></dr:side:nav>
-        </div>
-        <div ui-view class="col-sm-9 content">
-
+    <div class="container-fluid container-fluid-spacious">
+      <div class="dashhead m-t-md">
+            <div class="dashhead-titles">
+              <h6 class="dashhead-subtitle"><span class="icon icon-share navbar-brand-icon"></span>diroop ui:</h6>
+              <h2 class="dashhead-title">overview</h2>
+            </div>
+            <div class="btn-toolbar dashhead-toolbar">
+              <div class="btn-toolbar-item input-with-icon">
+                <input type="text"
+                        class="form-control"
+                      >
+                 <span class="icon icon-search"></span>
+          </div>
         </div>
       </div>
-   </div> -->
+      <ui:view></ui:view>
+    <div>
   </body>
 </html>

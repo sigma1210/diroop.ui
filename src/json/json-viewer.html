@@ -1,20 +1,14 @@
-<div>
-
-
-</div>
-
-
-<div class="panel panel-default">
-   <div class="panel-heading" ng-if="allowEval">
-     <div class="input-group" ng-click="compileEntity()">
+<div class="panel panel-default dr-json-view">
+   <div class="panel-heading" ng-if="$ctrl.allowEval">
+     <div class="input-group" ng-click="$ctrl.parseEntity()">
         <p class="form-control-static" >Evaluate the Json==> </p>
         <span class="input-group-addon"><a href><span class="icon icon-cog" aria-hidden="true" ></span></a></span>
      </div>
     </div>
     <div class="panel-body">
-      <div ui-ace="{
-                    useWrapMode : true,
+      <div ui-ace="{useWrapMode : true,
                     mode:'json',
-                    onLoad:aceLoaded}" ng-model="jsonData" ng-blur="compileEntity()"></div>
+                    onLoad:$ctrl.aceLoaded
+                    }" ng-model="$ctrl.jsonData" ng-blur="$ctrl.parseEntity()"></div>
     </div>
 </div>

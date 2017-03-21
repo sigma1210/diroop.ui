@@ -2,14 +2,14 @@
   'use strict';
   /**
    * @ngdoc component
-   * @name dr-nav-bar
+   * @name dr-side-nav
    * @memberof diroop.ui
    * @description
-        defines the standard menu
+        defines the side menu menu
    * @example
-      <dr:nav:bar></dr:nav:bar>
+      <dr:side:nav></dr:side:nav>
   **/
-  component('drNavBar',{
-    templateUrl:'drUiTemplateCache:/nav/navBar.html'
+  component('drSideNav',{
+    templateUrl:'drUiTemplateCache:/nav/sideNav.html'
   });
 })(angular,angular.module('diroop.ui').component);

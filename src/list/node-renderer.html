@@ -1,0 +1,21 @@
+<div class="diroop-tree-node">
+  <div ui-tree-handle class="tree-node tree-node-content">
+    <a class="btn btn-default-outline btn-sm" ng-if="node.nodes && node.nodes.length > 0" data-nodrag ng-click="$ctrl.toggle(this)"><span
+        class="icon"
+        ng-class="{
+          'icon-circle-with-plus': collapsed,
+          'icon-circle-with-minus': !collapsed
+        }"></span></a>
+    {{node.title}}
+    <a class="pull-right btn btn-danger-outline btn-sm" data-nodrag
+        ng-click="$ctrl.remove(this)"><span
+        class="icon icon-circle-with-cross"></span></a>
+    <a class="pull-right btn btn-info-outline btn-sm" data-nodrag
+        ng-click="$ctrl.newSubItem(this)" style="margin-right: 8px;"><span
+        class="icon icon-squared-plus"></span></a>
+  </div>
+  <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+    <li ng-repeat="node in node.nodes" ui-tree-node data-collapsed="true" data-expand-on-hover="true" ng-include="'drUiTemplateCache:/list/node-renderer.html'">
+    </li>
+  </ol>
+</div>

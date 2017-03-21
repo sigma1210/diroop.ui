@@ -13,7 +13,9 @@
     "bower_components/angular-ui-router/release/angular-ui-router.min.js",
     "bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js",
     "bower_components/json-schema-faker/dist/json-schema-faker.min.js",
-    "bower_components/diroop.tools/dist/diroop.tools.js"
+    "bower_components/angular-ui-tree/dist/angular-ui-tree.js",
+    "bower_components/diroop.tools/dist/diroop.tools.js",
+    "d3/d3.min.js"
   ],
   "source":[
     "./src/*.js",

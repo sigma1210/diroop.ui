@@ -1,0 +1,12 @@
+<div>
+<div class="hr-divider m-y-md">
+  <ul class="nav nav-pills hr-divider-content hr-divider-nav" ng-transclude></ul>
+</div>
+<div class="tab-content">
+  <div class="tab-pane"
+       ng-repeat="tab in tabset.tabs"
+       ng-class="{active: tabset.active === tab.index}"
+       uib-tab-content-transclude="tab">
+  </div>
+</div>
+</div>

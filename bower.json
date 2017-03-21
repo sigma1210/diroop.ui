@@ -20,6 +20,7 @@
     "json-schema-faker": "^0.4.1",
     "diroop.tools": "https://github.com/sigma1210/diroop.tools.git#1.0.0.4",
     "angular-ui-keypress": "angular-ui-utils#bower-keypress",
-    "angular-ui-router": "^0.4.2"
+    "angular-ui-router": "^0.4.2",
+    "angular-ui-tree": "^2.22.5"
   }
 }

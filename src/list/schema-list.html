@@ -1,17 +1,42 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <div class="input-group">
-        <input type="text" class="form-control" ng-model="searchText">
-        <span class="input-group-addon"><span class="glyphicon glyphicon-filter" aria-hidden="true" ></span></span>
+
+<div class="diroop-tree-view">
+  <div class="row">
+    <div class="col-sm-6">
+      <div ui-tree id="tree-root-boolean">
+        <ol ui-tree-nodes ng-model="$ctrl.dataBoolean">
+          <li ng-repeat="node in $ctrl.dataBoolean" ui-tree-node data-collapsed="true" data-expand-on-hover="true" ng-include="'drUiTemplateCache:/list/node-renderer.html'"></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="info">
+        {{info}}
+      </div>
+      <pre class="code">{{ $ctrl.dataBoolean | json }}</pre>
     </div>
   </div>
-  <div class="panel-body">
-    <div ng-repeat="schema in cachedSchemas | filter:searchText" class="dr-schema-list-item">
-    <a href class="btn btn-link"
-       ng-click="selectSchema(schema)">
-       <span class="glyphicon glyphicon-link" aria-hidden="true" ></span>
-       {{schema}}
-     </a>
-   </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <h3>Expand on Hover Example</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div ui-tree id="tree-root-number">
+        <ol ui-tree-nodes ng-model="$ctrl.dataNumber">
+          <li ng-repeat="node in $ctrl.dataNumber" ui-tree-node data-collapsed="true" data-expand-on-hover="2500" ng-include="'drUiTemplateCache:/list/node-renderer.html'"></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="info">
+        {{info}}
+      </div>
+      <pre class="code">{{ $ctrl.dataNumber | json }}</pre>
+    </div>
   </div>
 </div>
