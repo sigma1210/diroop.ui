@@ -13,7 +13,7 @@ describe('unit test : dr-schema-list',function(){
       var $scope= _rootScope.$new(true);
       var element = _compile(DIROOP_COMPILE_TEMPLATE)($scope);
       $scope.$digest();
-      expect(element.html()).toContain('dr-schema-list-item');
+      expect(element.html()).toContain('diroop-tree-view');
       $scope.$destroy();
   });
 

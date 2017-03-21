@@ -456,27 +456,6 @@ function config($stateProvider){
   'use strict';
   /**
    * @ngdoc component
-   * @name dr-ui-version
-   * @memberof diroop.ui
-   * @description
-        a componet used to display the current version of diroop ui
-   * @example
-      <dr:ui:version></dr:ui:version>
-  **/
-  component('drUiVersion',{
-    templateUrl:'drUiTemplateCache:/version/version.html',
-    controller:[function(){
-      var DIROOP_UI_VERSION ='v 1.0.0.0',
-          _self = this;
-      _self.version = DIROOP_UI_VERSION;
-    }]
-  });
-})(angular,angular.module('diroop.ui').component);
-
-(function(ng,component){
-  'use strict';
-  /**
-   * @ngdoc component
    * @name dr-schema-viewer
    * @memberof diroop.ui
    * @description
@@ -549,6 +528,27 @@ function config($stateProvider){
       }
 
 
+    }]
+  });
+})(angular,angular.module('diroop.ui').component);
+
+(function(ng,component){
+  'use strict';
+  /**
+   * @ngdoc component
+   * @name dr-ui-version
+   * @memberof diroop.ui
+   * @description
+        a componet used to display the current version of diroop ui
+   * @example
+      <dr:ui:version></dr:ui:version>
+  **/
+  component('drUiVersion',{
+    templateUrl:'drUiTemplateCache:/version/version.html',
+    controller:[function(){
+      var DIROOP_UI_VERSION ='v 1.0.0.0',
+          _self = this;
+      _self.version = DIROOP_UI_VERSION;
     }]
   });
 })(angular,angular.module('diroop.ui').component);
@@ -671,18 +671,6 @@ try {
   module = angular.module('diroop.ui.templateCache', []);
 }
 module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('drUiTemplateCache:/version/version.html',
-    '<div><dl class="dl-horizontal"><dt>diroop.ui :</dt><dd><small>{{$ctrl.version}}</small></dd></dl><dr:version></dr:version></div>');
-}]);
-})();
-
-(function(module) {
-try {
-  module = angular.module('diroop.ui.templateCache');
-} catch (e) {
-  module = angular.module('diroop.ui.templateCache', []);
-}
-module.run(['$templateCache', function($templateCache) {
   $templateCache.put('drUiTemplateCache:/tabs/tab.html',
     '<li ng-class="[{active: active, disabled: disabled}, classes]" role="presentation"><a href="" ng-click="select($event)" class="nav-link" uib-tab-heading-transclude="">{{heading}}</a></li>');
 }]);
@@ -697,6 +685,18 @@ try {
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('drUiTemplateCache:/tabs/tabset.html',
     '<div><div class="hr-divider m-y-md"><ul class="nav nav-pills hr-divider-content hr-divider-nav" ng-transclude=""></ul></div><div class="tab-content"><div class="tab-pane" ng-repeat="tab in tabset.tabs" ng-class="{active: tabset.active === tab.index}" uib-tab-content-transclude="tab"></div></div></div>');
+}]);
+})();
+
+(function(module) {
+try {
+  module = angular.module('diroop.ui.templateCache');
+} catch (e) {
+  module = angular.module('diroop.ui.templateCache', []);
+}
+module.run(['$templateCache', function($templateCache) {
+  $templateCache.put('drUiTemplateCache:/version/version.html',
+    '<div><dl class="dl-horizontal"><dt>diroop.ui :</dt><dd><small>{{$ctrl.version}}</small></dd></dl><dr:version></dr:version></div>');
 }]);
 })();
 
