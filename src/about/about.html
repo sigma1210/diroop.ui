@@ -1,16 +1,31 @@
-
-
 <div class="row">
   <div class="col-sm-3">
     <dr:side:nav></dr:side:nav>
   </div>
-  <div class="col-sm-9">
+  <div class="col-sm-8">
     <h1>about diroop</h1>
     <p class="lead">json schema templates in angular applications</p>
-    <p>diroop provides a collection of tools that can be used to package your json schemas</p>
-    <dr:schema:viewer></dr:schema:viewer>
-    <pre>https://ssatb-profileservice-dev-feature4.azurewebsites.net/swagger/docs/v1</pre>
-    <dr:schema:list></dr:schema:list>
+    <p>
+      JSON schema is a standard that allows the annotation and validation of JSON Documents.
+      <a href="http://json-schema.org/">http://json-schema.org/</a>
+    </p>
+    <p>
+      diroop tools provides a collections of Javascript utilities that allow a developer
+      to define and package schemas within an Angular module.
+      Developers may design there own schemas using tools such as Altova's Xmlspy
+      <a href="https://www.altova.com/download-json-schema-editor.html">ttps://www.altova.com/download-json-schema-editor.html</a> or the can choose from many predefined schemas.
+    </p>
+    <p>
+        With the publication of the draft 4 of the json schema,
+        <a href="http://json-schema.org/draft-04/schema">http://json-schema.org/draft-04/schema</a>,
+          a json schema can be broken  into smaller manageable and reusable fragments.
+          The developer needs a tool to facilitate including  and referencing these fragments within their javascript applications with out the need to expanding the schemas by hand.
+    <p>
+    <p>
+        diroop.tools solves this by providing a schema cache that work in a similar way to the $templateCache provided by angular.
+        Developers can package these schemas within there application without need to request them through a http request at run time.
+    </p>
+
 
   </div>
 

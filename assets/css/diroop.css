@@ -35,3 +35,8 @@ hr {
 .diroop-tree-view .tree-node{
   min-height:40px;
 }
+
+.dr-welcome
+{
+  padding:20px;
+}

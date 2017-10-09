@@ -18,6 +18,19 @@
       sampleModel:'=?'
     },
     controller:['$log','drSchemaLoader','drMockJsonService',function($log,schemaLoader,jsonFaker){
+      /**
+      * @ngdoc controller
+      * @name dr-schema-viewer
+      * @memberof diroop.ui
+      * @description
+           The controller for the schema viewer
+      * @example
+         <dr:schema:viewer></dr:schema:viewer>
+
+
+      **/
+
+
       var _self = this;
       _self.sampleModel = _self.sampleModel||{};
       _self.path = _self.path||"schemaCache:/address/address.schema.json";

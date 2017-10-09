@@ -1,8 +1,7 @@
 (function(){
   'use strict';
-
+// define gulp and gulp tasks
   var gulp = require('gulp')
-
   gulp.task('clean',clean);
   gulp.task('jshint', jshint);
   gulp.task('jshintTest',jshintTests);
@@ -13,6 +12,7 @@
   gulp.task('watch', ['build'],watch);
   gulp.task('default', ['watch']);
 
+  //globally define includes
   var concat      = require('gulp-concat'),
       rename      = require('gulp-rename'),
       jshint      = require('gulp-jshint'),
@@ -78,6 +78,8 @@
     function jshintTests(){
       return basehint([TEST_SRC_DIRECTORY],jshint.reporter('default'));
     }
+
+
 
     // base jshint - for defining custom hints
     function basehint(src,reporter){

@@ -22,12 +22,17 @@
   function drCompile($compile){
     return function(scope,element,attrs){
       function _watcher(scope){
+        //return the result of the dr-compile attribute eeva;uate in the current scopr
         return scope.$eval(attrs.drCompile);
       }
       function _handler(value){
+        // set the valuue of the elements hrml to the new value
         element.html(value);
+        // compile the element in scope
         $compile(element.contents())(scope);
       }
+
+      //if the the result of the watcher changes then call the handler
       scope.$watch(_watcher,_handler);
     };
   }

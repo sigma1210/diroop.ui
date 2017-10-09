@@ -5,11 +5,21 @@
 	(factory((global.d3 = global.d3 || {})));
 }(this, (function (exports) { 'use strict';
 
+
+
+
+
+
 var version = "4.7.3";
+
+
+
 
 var ascending = function(a, b) {
   return a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
 };
+
+
 
 var bisector = function(compare) {
   if (compare.length === 1) compare = ascendingComparator(compare);

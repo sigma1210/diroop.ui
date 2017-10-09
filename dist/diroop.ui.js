@@ -18,7 +18,7 @@
      * @memberof diroop.ui
 
      * @description
-          a components that wraps the about page
+          a components that wraps the about page  
      * @example
         <dr:about></dr:about>
     **/
@@ -51,12 +51,17 @@
   function drCompile($compile){
     return function(scope,element,attrs){
       function _watcher(scope){
+        //return the result of the dr-compile attribute eeva;uate in the current scopr
         return scope.$eval(attrs.drCompile);
       }
       function _handler(value){
+        // set the valuue of the elements hrml to the new value
         element.html(value);
+        // compile the element in scope
         $compile(element.contents())(scope);
       }
+
+      //if the the result of the watcher changes then call the handler
       scope.$watch(_watcher,_handler);
     };
   }
@@ -431,13 +436,15 @@
 (function(ng,app){
   'use strict';
 
-app.config(['$stateProvider',config]);
-function config($stateProvider){
+app.config(['$stateProvider','$urlRouterProvider', config]);
+function config($stateProvider,$urlRouterProvider){
+  //defines the home route
   var HOME={
     name :'drHome',
     url:'/welcome',
     template:'<dr:welcome></dr:welcome>'
   };
+
   $stateProvider.state(HOME);
 
  var ABOUT={
@@ -445,12 +452,64 @@ function config($stateProvider){
    url:'/about',
    template:'<dr:about></dr:about>'
  };
+
+
  $stateProvider.state(ABOUT);
+
+ var VIEW={
+   name:'drView',
+   url:'/view',
+   template:'<dr:view></dr:view>'
+ };
+
+
+ $stateProvider.state(VIEW);
+//
+  $urlRouterProvider.otherwise('/welcome')
+
 
 }
 
 
 })(angular,angular.module('diroop.ui'));
+
+(function(ng,component){
+  'use strict';
+  /**
+   * @ngdoc component
+   * @name dr-view
+   * @memberof diroop.ui
+
+   * @description
+        the main view page within the dirrop.ui application
+   * @example
+      <dr:view></dr:view>
+  **/
+component('drView',{
+  templateUrl:'drUiTemplateCache:/view/view.html',
+});
+})(angular,angular.module('diroop.ui').component);
+
+(function(ng,component){
+  'use strict';
+  /**
+   * @ngdoc component
+   * @name dr-ui-version
+   * @memberof diroop.ui
+   * @description
+        a componet used to display the current version of diroop ui
+   * @example
+      <dr:ui:version></dr:ui:version>
+  **/
+  component('drUiVersion',{
+    templateUrl:'drUiTemplateCache:/version/version.html',
+    controller:[function(){
+      var DIROOP_UI_VERSION ='v 1.0.0.0',
+          _self = this;
+      _self.version = DIROOP_UI_VERSION;
+    }]
+  });
+})(angular,angular.module('diroop.ui').component);
 
 (function(ng,component){
   'use strict';
@@ -472,6 +531,19 @@ function config($stateProvider){
       sampleModel:'=?'
     },
     controller:['$log','drSchemaLoader','drMockJsonService',function($log,schemaLoader,jsonFaker){
+      /**
+      * @ngdoc controller
+      * @name dr-schema-viewer
+      * @memberof diroop.ui
+      * @description
+           The controller for the schema viewer
+      * @example
+         <dr:schema:viewer></dr:schema:viewer>
+
+
+      **/
+
+
       var _self = this;
       _self.sampleModel = _self.sampleModel||{};
       _self.path = _self.path||"schemaCache:/address/address.schema.json";
@@ -533,27 +605,6 @@ function config($stateProvider){
 })(angular,angular.module('diroop.ui').component);
 
 (function(ng,component){
-  'use strict';
-  /**
-   * @ngdoc component
-   * @name dr-ui-version
-   * @memberof diroop.ui
-   * @description
-        a componet used to display the current version of diroop ui
-   * @example
-      <dr:ui:version></dr:ui:version>
-  **/
-  component('drUiVersion',{
-    templateUrl:'drUiTemplateCache:/version/version.html',
-    controller:[function(){
-      var DIROOP_UI_VERSION ='v 1.0.0.0',
-          _self = this;
-      _self.version = DIROOP_UI_VERSION;
-    }]
-  });
-})(angular,angular.module('diroop.ui').component);
-
-(function(ng,component){
   /**
    * @ngdoc component
    * @name dr-welcome
@@ -576,7 +627,7 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('drUiTemplateCache:/about/about.html',
-    '<div class="row"><div class="col-sm-3"><dr:side:nav></dr:side:nav></div><div class="col-sm-9"><h1>about diroop</h1><p class="lead">json schema templates in angular applications</p><p>diroop provides a collection of tools that can be used to package your json schemas</p><dr:schema:viewer></dr:schema:viewer><pre>https://ssatb-profileservice-dev-feature4.azurewebsites.net/swagger/docs/v1</pre><dr:schema:list></dr:schema:list></div></div>');
+    '<div class="row"><div class="col-sm-3"><dr:side:nav></dr:side:nav></div><div class="col-sm-8"><h1>about diroop</h1><p class="lead">json schema templates in angular applications</p><p>JSON schema is a standard that allows the annotation and validation of JSON Documents. <a href="http://json-schema.org/">http://json-schema.org/</a></p><p>diroop tools provides a collections of Javascript utilities that allow a developer to define and package schemas within an Angular module. Developers may design there own schemas using tools such as Altova\'s Xmlspy <a href="https://www.altova.com/download-json-schema-editor.html">ttps://www.altova.com/download-json-schema-editor.html</a> or the can choose from many predefined schemas.</p><p>With the publication of the draft 4 of the json schema, <a href="http://json-schema.org/draft-04/schema">http://json-schema.org/draft-04/schema</a>, a json schema can be broken into smaller manageable and reusable fragments. The developer needs a tool to facilitate including and referencing these fragments within their javascript applications with out the need to expanding the schemas by hand.</p><p></p><p>diroop.tools solves this by providing a schema cache that work in a similar way to the $templateCache provided by angular. Developers can package these schemas within there application without need to request them through a http request at run time.</p></div></div>');
 }]);
 })();
 
@@ -636,7 +687,7 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('drUiTemplateCache:/nav/navBar.html',
-    '<nav class="navbar navbar-inverse navbar-fixed-top"><div class="container-fluid container-fluid-spacious"><div class="navbar-header"><a class="navbar-brand navbar-brand-emphasized" ui-sref="drHome"><span class="icon icon-share navbar-brand-icon"></span> diroop ui:</a></div><div class="collapse navbar-collapse"><ul class="nav navbar-nav"><li ui-sref-active="active"><a ui-sref="drHome">welcome</a></li><li ui-sref-active="active"><a ui-sref="drAbout">about</a></li></ul><div class="form-inline navbar-form navbar-right"><div class="input-with-icon"><input class="form-control" type="text" placeholder="Search..."> <span class="icon icon-magnifying-glass"></span></div></div></div></div></nav>');
+    '<nav class="navbar navbar-inverse navbar-fixed-top"><div class="container-fluid container-fluid-spacious"><div class="navbar-header"><a class="navbar-brand navbar-brand-emphasized" ui-sref="drHome"><span class="icon icon-share navbar-brand-icon"></span> diroop ui:</a></div><div class="collapse navbar-collapse"><ul class="nav navbar-nav"><li ui-sref-active="active"><a ui-sref="drHome">welcome</a></li><li ui-sref-active="active"><a ui-sref="drView">main</a></li><li ui-sref-active="active"><a ui-sref="drAbout">about</a></li></ul><div class="form-inline navbar-form navbar-right"><div class="input-with-icon"><input class="form-control" disabled="" type="text" placeholder="Search..."> <span class="icon icon-magnifying-glass"></span></div></div></div></div></nav>');
 }]);
 })();
 
@@ -648,7 +699,7 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('drUiTemplateCache:/nav/sideNav.html',
-    '<nav class="sidebar-nav"><div class="collapse nav-toggleable-sm"><ul class="nav nav-pills nav-stacked"><li ui-sref-active="active"><a ui-sref="drHome">welcome</a></li><li ui-sref-active="active"><a ui-sref="drAbout">about</a></li></ul><hr class="visible-xs m-t"></div></nav>');
+    '<nav class="sidebar-nav"><div class="collapse nav-toggleable-sm"><ul class="nav nav-pills nav-stacked"><li ui-sref-active="active"><a ui-sref="drHome">welcome</a></li><li ui-sref-active="active"><a ui-sref="drView">main</a></li><li ui-sref-active="active"><a ui-sref="drAbout">about</a></li></ul><hr class="visible-xs m-t"></div></nav>');
 }]);
 })();
 
@@ -707,6 +758,18 @@ try {
   module = angular.module('diroop.ui.templateCache', []);
 }
 module.run(['$templateCache', function($templateCache) {
+  $templateCache.put('drUiTemplateCache:/view/view.html',
+    '<div class="row"><div class="col-sm-3"><dr:side:nav></dr:side:nav></div><div class="col-sm-8"><dr:schema:viewer></dr:schema:viewer></div></div>');
+}]);
+})();
+
+(function(module) {
+try {
+  module = angular.module('diroop.ui.templateCache');
+} catch (e) {
+  module = angular.module('diroop.ui.templateCache', []);
+}
+module.run(['$templateCache', function($templateCache) {
   $templateCache.put('drUiTemplateCache:/viewer/schema-viewer.html',
     '<div><dr:schema:path:loader path="$ctrl.path" on-schema-select="$ctrl.selectSchema(ref)"></dr:schema:path:loader><uib-tabset active="active" template-url="drUiTemplateCache:/tabs/tabset.html"><uib-tab index="0" template-url="drUiTemplateCache:/tabs/tab.html"><uib-tab-heading><span class="icon icon-flow-line"></span> raw</uib-tab-heading><dr:json:viewer entity="$ctrl.rawSchema"></dr:json:viewer></uib-tab><uib-tab index="1" template-url="drUiTemplateCache:/tabs/tab.html"><uib-tab-heading><span class="icon icon-flow-tree"></span> expanded</uib-tab-heading><dr:json:viewer entity="$ctrl.schema"></dr:json:viewer></uib-tab><uib-tab index="2" template-url="drUiTemplateCache:/tabs/tab.html"><uib-tab-heading><span class="icon icon-flow-cascade"></span> sample</uib-tab-heading><dr:json:viewer entity="$ctrl.sampleModel"></dr:json:viewer></uib-tab><uib-tab index="3" ng-if="$ctrl.error" template-url="drUiTemplateCache:/tabs/tab.html"><uib-tab-heading><span class="icon icon-bug"></span> errors</uib-tab-heading><div class="panel panel-danger"><div class="panel-body"><pre class="pre-scrollable">{{$ctrl.error|json}}</pre></div></div></uib-tab></uib-tabset></div>');
 }]);
@@ -732,6 +795,6 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('drUiTemplateCache:/welcome/welcome.html',
-    '<div><h1>welcome to diroop</h1><p class="lead">tools to help manage your json schemas</p></div>');
+    '<div class="dr-welcome"><h1>welcome to diroop</h1><p class="lead">tools to help manage your json schemas</p></div>');
 }]);
 })();

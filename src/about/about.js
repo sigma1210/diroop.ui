@@ -6,7 +6,7 @@
      * @memberof diroop.ui
 
      * @description
-          a components that wraps the about page
+          a components that wraps the about page  
      * @example
         <dr:about></dr:about>
     **/
